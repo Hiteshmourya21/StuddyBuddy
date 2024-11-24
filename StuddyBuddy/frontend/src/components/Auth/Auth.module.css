@@ -7,15 +7,15 @@
   font-family: "Montserrat", sans-serif;
 }
 
-body {
+.containerBody {
   background-color: #fdf8f8;
-  /* background: linear-gradient(to-right, #e2e2e2, #c9d6ff); */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
 }
+
 
 .container {
   background-color: #fff;

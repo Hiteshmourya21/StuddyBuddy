@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './components/User/Register';
 import Profile from './components/User/Profile';
-import Login from './components/User/Login';
-import Auth from './components/User/Auth';
+import Auth from './components/Auth/Auth';
+import LandingPage from './components/LandingPage/landingPage';
+import About from './components/MisleniousPages/AboutPage/About';
+import Feature from './components/MisleniousPages/FeaturePage/Feature';
+
+
 
 function App() {
   return (
@@ -13,10 +16,12 @@ function App() {
           {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/auth" element={<Auth />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/about" element={<About />} />
+          <Route path="/features" element={<Feature />} />
+
 
           {/* Home route */}
-          <Route path="/" element={<h1>Welcome to the Study Platform</h1>} />
+          <Route path="/" element={<LandingPage/>} />
         </Routes>
       </div>
     </Router>
