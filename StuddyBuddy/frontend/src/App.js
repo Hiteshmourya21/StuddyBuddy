@@ -5,6 +5,7 @@ import Auth from './components/Auth/Auth';
 import LandingPage from './components/LandingPage/landingPage';
 import About from './components/MisleniousPages/AboutPage/About';
 import Feature from './components/MisleniousPages/FeaturePage/Feature';
+import ProfilePage from './components/User/ProfilePage';
 
 
 
@@ -14,7 +15,7 @@ function App() {
       <div className="App">
         <Routes>
           {/* <Route path="/register" element={<Register />} /> */}
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Feature />} />

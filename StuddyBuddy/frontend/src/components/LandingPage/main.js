@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Main = () => {
     const testimonials = [
-        { id: 1, text: "StudyBuddy helped me ace my JEE exam!", author: "Rahul S." },
-        { id: 2, text: "The study groups feature is a game-changer!", author: "Priya M." },
-        { id: 3, text: "I love the mental health support. It's so important!", author: "Amit K." },
+        { id: 1, text: "StudyBuddy helped me ace my JEE exam!", author: "Himanshu C." },
+        { id: 2, text: "The study groups feature is a game-changer!", author: "Hitesh M." },
+        { id: 3, text: "Mental health support is crucial for overall well-being.", author: "Kishori G." },
       ];
 
   return (
