@@ -1,5 +1,5 @@
-import Footer from "../../LandingPage/footer";
-import Header from "../../LandingPage/header";
+import Footer from "../../Pages/LandingPage/footer";
+import Header from "../../Pages/LandingPage/header";
 
 
 

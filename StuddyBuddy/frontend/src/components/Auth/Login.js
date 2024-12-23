@@ -16,35 +16,13 @@ function Login() {
       console.log(response.data); // Handle the response as needed
       localStorage.setItem('token', response.data.token); // Assuming the token is sent in the response
       // Redirect to the profile page after successful login
-      navigate('/profile');
+      navigate('/home');
     } catch (error) {
       console.error('Login error:', error);
       alert('Failed to login');
     }
   };
-  
-  // <div>
-  //   <h2>Login</h2>
-  //   <form onSubmit={handleSubmit}>
-  //     <label>Email:</label>
-  //     <input
-  //       type="email"
-  //       value={email}
-  //       onChange={(e) => setEmail(e.target.value)}
-  //       required
-  //     />
-  //     <br />
-  //     <label>Password:</label>
-  //     <input
-  //       type="password"
-  //       value={password}
-  //       onChange={(e) => setPassword(e.target.value)}
-  //       required
-  //     />
-  //     <br />
-  //     <button type="submit">Login</button>
-  //   </form>
-  // </div>
+
   return (
     <div className={`${styles.formContainer} ${styles.signIn}`}>
     <form onSubmit={handleSubmit}>

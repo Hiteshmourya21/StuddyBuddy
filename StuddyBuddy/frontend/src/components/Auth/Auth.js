@@ -4,8 +4,8 @@ import styles from './Auth.module.css';
 import Register from './Register.js';
 import Login from './Login.js';
 import { useLocation } from 'react-router-dom';
-import Header from '../LandingPage/header';
-import Footer from '../LandingPage/footer';
+import Header from '../Pages/LandingPage/header.js';
+import Footer from '../Pages/LandingPage/footer.js';
 
 
 function Auth() {

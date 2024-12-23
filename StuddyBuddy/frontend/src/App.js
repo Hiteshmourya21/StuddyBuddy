@@ -1,28 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Profile from './components/User/Profile';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './components/Auth/Auth';
-import LandingPage from './components/LandingPage/landingPage';
+import LandingPage from './components/Pages/LandingPage/landingPage';
 import About from './components/MisleniousPages/AboutPage/About';
 import Feature from './components/MisleniousPages/FeaturePage/Feature';
-import ProfilePage from './components/User/ProfilePage';
-
-
+import HomePage from './components/Pages/HomePage/Home';  // Ensure HomePage is correctly imported
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          {/* <Route path="/register" element={<Register />} /> */}
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* This should render HomePage when navigating to /home */}
+          <Route path="/home/*" element={<HomePage />} />  {/* Use /* to match nested routes */}
           <Route path="/auth" element={<Auth />} />
           <Route path="/about" element={<About />} />
           <Route path="/features" element={<Feature />} />
-
-
-          {/* Home route */}
-          <Route path="/" element={<LandingPage/>} />
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </div>
     </Router>
