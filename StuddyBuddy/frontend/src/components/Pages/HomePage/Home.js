@@ -6,6 +6,7 @@ import DashboardPage from '../../User/dashboard/dashboard.js';
 import HomeContent from './components/HomeContent.js';
 import styles from './Styles/HomePage.module.css';
 import ProfilePage from '../../User/profile/ProfilePage.js';
+import QuizData from '../../User/dashboard/components/QuizData.js';
 
 const HomePage = () => {
     const [user, setUser] = useState(null);
@@ -36,7 +37,7 @@ const HomePage = () => {
               <Route index element={<HomeContent />} />
               <Route path="/home/search" element={<div>Search Page</div>} />
               <Route path="/home/explore" element={<div>Explore Page</div>} />
-              <Route path="/home/quiz" element={<div>Quiz Page</div>} />
+              <Route path="/user/dashboard/quiz" element={<QuizData/>} />
               <Route path="/home/forum" element={<div>Forum Page</div>} />
               <Route path="/home/reward" element={<div>Reward Page</div>} />
               <Route path="/user/dashboard" element={<DashboardPage />} />
