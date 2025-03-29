@@ -37,7 +37,7 @@ const HomePage = () => {
               <Route index element={<HomeContent />} />
               <Route path="/home/search" element={<div>Search Page</div>} />
               <Route path="/home/explore" element={<div>Explore Page</div>} />
-              <Route path="/user/dashboard/quiz" element={<QuizData/>} />
+              <Route path="/user/dashboard/QuizData" element={<QuizData/>} />
               <Route path="/home/forum" element={<div>Forum Page</div>} />
               <Route path="/home/reward" element={<div>Reward Page</div>} />
               <Route path="/user/dashboard" element={<DashboardPage />} />
