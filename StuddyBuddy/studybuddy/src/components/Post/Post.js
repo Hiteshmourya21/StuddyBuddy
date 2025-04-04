@@ -127,7 +127,20 @@ const Post = ({ post }) => {
 						text={`Comment (${comments.length})`}
 						onClick={() => setShowComments(!showComments)}
 					/>
-					<PostAction icon={<Share2 size={18} />} text='Share' />
+					<PostAction 
+                    icon={<Share2 size={18} />} 
+                    text='Share' 
+                    onClick={ async() => { 
+                        try {
+                            // Get the current URL of the post
+                            const postUrl = window.location.href;
+                            await navigator.clipboard.writeText(postUrl);
+                            toast.success('Post URL copied to clipboard!');
+                        } catch (err) {
+                            toast.error('Failed to copy the URL.');
+                        }  
+                    }} 
+                />
             </div>
         </div>
 

@@ -1,5 +1,8 @@
 import User from "../models/user.model.js";
 import cloudinary from "../lib/cloudinary.js";
+import Post from "../models/post.model.js";
+import Question from "../models/questions.model.js";
+import StudyGroup from "../models/studyGroup.model.js";
 
 export const getSuggestedConnections = async (req, res) => {
     try {
@@ -79,4 +82,75 @@ export const updateProfile = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 }
+
+export const getUserById = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        // console.log(userId);
+        const user = await User.findById(userId).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.json(user);
+    } catch (error) {
+        console.error("Error in getUserById controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+}
     
+export const getSearchResults = async (req, res) => {
+    try {
+        
+        const { category, q } = req.query;
+        if (!category || !q) {
+            return res.status(400).json({ message: "Category and query are required" });
+        }
+        
+        if (!["student", "post", "forum", "groups"].includes(category)) {
+            return res.status(400).json({ message: "Invalid category" });
+        }
+        
+        let results = [];
+        
+        if (category === "student") {
+            results = await User.find({
+                $or: [
+                    { username: { $regex: q, $options: "i" } },
+                    { name: { $regex: q, $options: "i" } }
+                ]
+            }).select("-password");
+        }
+
+        if (category === "post") {
+            results = await Post.find({
+                $or: [
+                    { title: { $regex: q, $options: "i" } },
+                    { content: { $regex: q, $options: "i" } }
+                ]
+            }).populate("author", "name username profilePicture headline").limit(10);
+        }
+
+        if (category === "forum") {
+            results = await Question.find({
+                $or: [
+                    { title: { $regex: q, $options: "i" } },
+                    { description: { $regex: q, $options: "i" } }
+                ]
+            }).populate("user", "name username profilePicture headline").limit(10);
+        }
+
+        if (category === "groups") {
+            results = await StudyGroup.find({
+                $or: [
+                    { name: { $regex: q, $options: "i" } },
+                    { description: { $regex: q, $options: "i" } }
+                ]
+            });
+        }
+
+        return res.json(results);
+    } catch (error) {
+        console.error("Error in getSearchResults controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};

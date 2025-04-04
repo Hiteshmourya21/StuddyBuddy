@@ -74,6 +74,10 @@
     right: 1rem;
 }
 
+.chatSidebar {
+    left: 6.5rem;
+}
+
 .menuContent {
     display: flex;
     flex-direction: column;
@@ -92,19 +96,54 @@
     background-color: #f0f0f0;
 }
 
+.menuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+}
+
+.mobileNavLink {
+    color: #333;
+    text-decoration: none;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.mobileNavLink:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .nav {
         display: none;
     }
 
-    .header {
-        justify-content: space-between;
+    .menuButton {
+        display: block;
     }
 
-    .sidebar {
-        width: calc(100% - 2rem);
-        left: 1rem;
-        right: 1rem;
+    .mobileMenu {
+        display: flex;
     }
 }
+
 

@@ -18,6 +18,9 @@ import Reward from './pages/reward/Reward.js';
 import ProfilePage from './pages/user/ProfilePage.js';
 import PostPage from './pages/PostPage.js';
 import NavBar from './components/NavBar/NavBar.js';
+import SingleChatPage from './pages/chat/SingleChatPAge.js';
+import SingleGroupPage from './pages/chat/SingleGroupPage.js';
+import MeetPage from './pages/chat/MeetPage.js';
 
 
 function App() {
@@ -50,17 +53,20 @@ function App() {
         <Route path="/features" element={<Feature />} />
         {/* Routes After Login */}
         <Route path="/search" element={<Search/>} />
-        <Route path="/explore" element={<Explore/>} />
-        <Route path="/quiz" element={<Quiz/>} />
-        <Route path="/forum" element={<Forum/>} />
+        <Route path="/explore/*" element={<Explore/>} />
+        
+        <Route path="/forum/*" element={<Forum/>} />
         <Route path="/reward" element={<Reward/>} />
         {/* Routes For User */}
         <Route path="/:username/dashboard" element={<div>dashboard Page</div>} />
         <Route path="/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/" />} />
         <Route path="/post/:postId" element={authUser ? <PostPage /> : <Navigate to="/" />} />
         {/* Routes For Chat */}
-        <Route path="/chat" element={<div>Chat Page</div>} />
-        <Route path="/group-chat" element={<div>Group Chat Page</div>} />
+        <Route path="/chat/:userId" element={authUser ? <SingleChatPage /> : <Navigate to="/" />} />
+        <Route path="/meet/:groupId" element={<MeetPage />} />
+        <Route path="/groups/:groupId" element={<SingleGroupPage />} />
+
+        <Route path="/quiz/*" element={<Quiz/>} />
       </Routes>
       <Toaster/>
       </div>
