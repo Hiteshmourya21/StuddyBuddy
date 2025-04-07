@@ -2,8 +2,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-
-// Chart Data
+import TodoSection from './TodoSection';
 const difficultyData = [
   { name: 'Easy', value: 4 },
   { name: 'Medium', value: 6 },
@@ -11,8 +10,6 @@ const difficultyData = [
 ];
 
 const COLORS = ['#10B981', '#F59E0B', '#EF4444'];
-
-// Sections
 const Dashboard = () => (
   <div className="p-6 grid grid-cols-2 gap-4">
     <div className="bg-white rounded-2xl shadow p-4 col-span-1 flex flex-col items-center">
@@ -39,9 +36,10 @@ const Dashboard = () => (
 
     <div className="bg-white rounded-2xl shadow p-4 col-span-1">
       <h2 className="text-lg font-semibold">📝 Todo List</h2>
+      <TodoSection />
     </div>
     <div className="bg-white rounded-2xl shadow p-4 col-span-1">
-      <h2 className="text-lg font-semibold">📊Quizzes Data / Graph</h2>
+      <h2 className="text-lg font-semibold">📊Quizzes Data </h2>
     </div>
     <div className="bg-white rounded-2xl shadow p-4 col-span-1">
       <h2 className="text-lg font-semibold">🔥Streaks</h2>
@@ -60,8 +58,6 @@ const QuizzesData = () => <div className="p-6 text-xl">📊 Quizzes Data Page</d
 const Streaks = () => <div className="p-6 text-xl">🔥 Streaks Page</div>;
 const History = () => <div className="p-6 text-xl">📅 History Page</div>;
 const Recommendations = () => <div className="p-6 text-xl">💡 Recommendations Page</div>;
-
-// App Component
 const DashboardApp = () => {
   return (
     <div className="min-h-screen bg-gray-100">
