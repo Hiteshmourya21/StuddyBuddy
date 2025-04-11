@@ -21,6 +21,7 @@ import NavBar from './components/NavBar/NavBar.js';
 import SingleChatPage from './pages/chat/SingleChatPAge.js';
 import SingleGroupPage from './pages/chat/SingleGroupPage.js';
 import MeetPage from './pages/chat/MeetPage.js';
+import DashboardApp from './pages/dashboard/Home.js';
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
         <Route path="/forum/*" element={<Forum/>} />
         <Route path="/reward" element={<Reward/>} />
         {/* Routes For User */}
-        <Route path="/:username/dashboard" element={<div>dashboard Page</div>} />
+        <Route path="/:username/dashboard/*" element={<DashboardApp/>} />
         <Route path="/profile/:username" element={authUser ? <ProfilePage /> : <Navigate to="/" />} />
         <Route path="/post/:postId" element={authUser ? <PostPage /> : <Navigate to="/" />} />
         {/* Routes For Chat */}

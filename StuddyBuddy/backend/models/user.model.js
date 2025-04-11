@@ -40,7 +40,8 @@ const userSchema = new mongoose.Schema({
     connections:[{
         type: mongoose.Schema.Types.ObjectId, ref: "User"
     }],
-    chatConnections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Chat" }]
+    chatConnections: [{ type: mongoose.Schema.Types.ObjectId, ref: "Chat" }],
+    
 
 },{timestamps:true})
 

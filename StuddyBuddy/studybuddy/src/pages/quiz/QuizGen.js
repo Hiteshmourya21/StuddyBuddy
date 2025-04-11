@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { axiosInstance } from "../../lib/axios";
 
 const QuizGen = () => {
@@ -11,7 +10,7 @@ const QuizGen = () => {
 
   useEffect(() => {
     axiosInstance
-      .get("/quiz/results")
+      .get("/quiz/result/ai/previous")
       .then((response) => setQuizResults(response.data))
       .catch((error) => console.error("Error fetching quiz results:", error));
   }, []);
@@ -30,12 +29,7 @@ const QuizGen = () => {
       <div style={quizStyles.selectionBox}>
         <label>
           <strong>Choose Subject:</strong>
-          <select style={quizStyles.select} value={subject} onChange={(e) => setSubject(e.target.value)}>
-            <option value="">Select Subject</option>
-            <option value="Math">Math</option>
-            <option value="Science">Science</option>
-            <option value="History">History</option>
-          </select>
+          <input style={quizStyles.select} type="text" placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
         </label>
 
         <label>
@@ -53,7 +47,7 @@ const QuizGen = () => {
 
       <h2>📊 Last 5 Quiz Results</h2>
       <ul>
-        {quizResults.map((result, index) => (
+        {quizResults?.quizAttempts?.map((result, index) => (
           <li key={index}>
             <strong>Subject:</strong> {result.subject} | <strong>Difficulty:</strong> {result.difficulty} | <strong>Score:</strong> {result.score}
           </li>

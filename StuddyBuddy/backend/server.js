@@ -60,7 +60,7 @@ app.use(cookieParser());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/posts", postRoutes);
-app.use("/api/v1/connections", connectionRoutes);
+app.use("/api/v1/connections", connectionRoutes);   
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/study-groups", groupRoutes);
 app.use("/api/v1/forum",forumRoutes);
