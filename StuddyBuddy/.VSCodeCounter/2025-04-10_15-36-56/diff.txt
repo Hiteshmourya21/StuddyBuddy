@@ -1,0 +1,160 @@
+Date : 2025-04-10 15:36:56
+Directory : d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src
+Total : 98 files,  4460 codes, 21 comments, 456 blanks, all 4937 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         89 |      3,613 |         10 |        310 |      3,933 |
+| CSS        |          9 |        847 |         11 |        146 |      1,004 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                   |         98 |      4,460 |         21 |        456 |      4,937 |
+| . (Files)                                                                                           |          4 |         89 |          1 |         19 |        109 |
+| ..                                                                                                  |         34 |     -1,318 |        -70 |       -338 |     -1,726 |
+| ..\..                                                                                               |         34 |     -1,318 |        -70 |       -338 |     -1,726 |
+| ..\..\backend                                                                                       |         34 |     -1,318 |        -70 |       -338 |     -1,726 |
+| ..\..\backend (Files)                                                                               |          1 |        -54 |         -5 |        -16 |        -75 |
+| ..\..\backend\controllers                                                                           |          9 |       -897 |        -57 |       -214 |     -1,168 |
+| ..\..\backend\lib                                                                                   |          4 |        -71 |         -1 |        -15 |        -87 |
+| ..\..\backend\middleware                                                                            |          1 |        -23 |         -1 |         -8 |        -32 |
+| ..\..\backend\models                                                                                |         10 |       -174 |          0 |        -37 |       -211 |
+| ..\..\backend\routes                                                                                |          9 |        -99 |         -6 |        -48 |       -153 |
+| api                                                                                                 |          1 |         17 |          0 |          5 |         22 |
+| components                                                                                          |         22 |      2,323 |         19 |        290 |      2,632 |
+| components (Files)                                                                                  |          3 |        207 |          0 |         18 |        225 |
+| components\NavBar                                                                                   |          6 |        571 |          8 |         93 |        672 |
+| components\Post                                                                                     |          3 |        280 |          1 |         28 |        309 |
+| components\User                                                                                     |          5 |        673 |          5 |         71 |        749 |
+| components\forum                                                                                    |          5 |        592 |          5 |         80 |        677 |
+| lib                                                                                                 |          2 |         11 |          0 |          2 |         13 |
+| pages                                                                                               |         34 |      3,333 |         71 |        477 |      3,881 |
+| pages (Files)                                                                                       |          1 |         31 |          0 |          7 |         38 |
+| pages\about                                                                                         |          1 |         22 |          0 |         11 |         33 |
+| pages\auth                                                                                          |          4 |        411 |         11 |         54 |        476 |
+| pages\chat                                                                                          |          3 |        324 |          6 |         46 |        376 |
+| pages\explore                                                                                       |          7 |      1,036 |         43 |        155 |      1,234 |
+| pages\explore (Files)                                                                               |          1 |         50 |          1 |         11 |         62 |
+| pages\explore\components                                                                            |          6 |        986 |         42 |        144 |      1,172 |
+| pages\explore\components (Files)                                                                    |          3 |        882 |         42 |        119 |      1,043 |
+| pages\explore\components\ui                                                                         |          3 |        104 |          0 |         25 |        129 |
+| pages\feature                                                                                       |          1 |         22 |          0 |         10 |         32 |
+| pages\forum                                                                                         |          1 |         16 |          0 |          4 |         20 |
+| pages\home                                                                                          |          2 |         81 |          0 |         16 |         97 |
+| pages\landing                                                                                       |          5 |        536 |          7 |         65 |        608 |
+| pages\quiz                                                                                          |          6 |        680 |          3 |         84 |        767 |
+| pages\reward                                                                                        |          1 |          9 |          0 |          2 |         11 |
+| pages\search                                                                                        |          1 |        123 |          1 |         11 |        135 |
+| pages\user                                                                                          |          1 |         42 |          0 |         12 |         54 |
+| utils                                                                                               |          1 |          5 |          0 |          1 |          6 |
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                            | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\auth.controller.js                      | JavaScript |        -75 |         -1 |        -19 |        -95 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\chat.controller.js                      | JavaScript |        -47 |          0 |        -19 |        -66 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\connection.controller.js                | JavaScript |       -141 |         -3 |        -39 |       -183 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\forum.controller.js                     | JavaScript |       -122 |          0 |        -20 |       -142 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\post.controller.js                      | JavaScript |       -101 |        -20 |        -23 |       -144 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\quiz.controller.js                      | JavaScript |       -175 |        -31 |        -42 |       -248 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\refresher.controller.js                 | JavaScript |         -2 |          0 |         -5 |         -7 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\studyGroup.controller.js                | JavaScript |        -52 |         -1 |        -17 |        -70 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\user.controller.js                      | JavaScript |       -182 |         -1 |        -30 |       -213 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\cloudinary.js                                   | JavaScript |         -9 |          0 |         -3 |        -12 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\db.js                                           | JavaScript |        -10 |          0 |         -1 |        -11 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\multer.js                                       | JavaScript |        -20 |         -1 |         -6 |        -27 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\openai.js                                       | JavaScript |        -32 |          0 |         -5 |        -37 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\middleware\auth.middleware.js                       | JavaScript |        -23 |         -1 |         -8 |        -32 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\answers.model.js                             | JavaScript |        -11 |          0 |         -5 |        -16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\chat.model.js                                | JavaScript |        -13 |          0 |         -4 |        -17 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\connectionRequest.model.js                   | JavaScript |        -22 |          0 |         -4 |        -26 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\post.model.js                                | JavaScript |        -19 |          0 |         -3 |        -22 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\questions.model.js                           | JavaScript |        -10 |          0 |         -3 |        -13 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\quiz.model.js                                | JavaScript |        -15 |          0 |         -3 |        -18 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\quizResult.model.js                          | JavaScript |        -13 |          0 |         -3 |        -16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\resource.model.js                            | JavaScript |         -9 |          0 |         -3 |        -12 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\studyGroup.model.js                          | JavaScript |        -17 |          0 |         -4 |        -21 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\user.model.js                                | JavaScript |        -45 |          0 |         -5 |        -50 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\auth.route.js                                | JavaScript |         -9 |          0 |         -4 |        -13 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\chat.route.js                                | JavaScript |         -9 |          0 |         -5 |        -14 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\connection.route.js                          | JavaScript |        -12 |         -2 |         -4 |        -18 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\forum.route.js                               | JavaScript |        -12 |         -4 |         -7 |        -23 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\post.route.js                                | JavaScript |        -11 |          0 |         -4 |        -15 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\quiz.route.js                                | JavaScript |        -15 |          0 |         -9 |        -24 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\refresher.route.js                           | JavaScript |         -6 |          0 |         -3 |         -9 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\studyGroup.route.js                          | JavaScript |        -11 |          0 |         -5 |        -16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\user.route.js                                | JavaScript |        -14 |          0 |         -7 |        -21 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\server.js                                           | JavaScript |        -54 |         -5 |        -16 |        -75 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\App.css                                      | CSS        |          0 |          0 |          1 |          1 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\App.js                                       | JavaScript |         66 |          0 |         12 |         78 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\api\chatApi.js                               | JavaScript |         17 |          0 |          5 |         22 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\Layout.js                         | JavaScript |         14 |          0 |          2 |         16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\ChatSidebar.js             | JavaScript |         60 |          2 |         10 |         72 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\ChatSidebar.module.css     | CSS        |         46 |          0 |          7 |         53 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\GroupSidebar.js            | JavaScript |        124 |          4 |         18 |        146 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\GroupSidebar.module.css    | CSS        |        118 |          0 |         17 |        135 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\NavBar.js                  | JavaScript |        100 |          0 |         16 |        116 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\NavBar\NavBar.module.css          | CSS        |        123 |          2 |         25 |        150 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\Post\Post.js                      | JavaScript |        176 |          1 |         16 |        193 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\Post\PostAction.js                | JavaScript |          8 |          0 |          0 |          8 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\Post\PostCreation.js              | JavaScript |         96 |          0 |         12 |        108 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\RecommendedUser.js                | JavaScript |        123 |          0 |         12 |        135 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\Sidebar.js                        | JavaScript |         70 |          0 |          4 |         74 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\User\AboutSection.js              | JavaScript |         48 |          0 |          2 |         50 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\User\EducationSection.js          | JavaScript |        113 |          0 |          6 |        119 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\User\ProfileHeader.js             | JavaScript |        236 |          0 |         24 |        260 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\User\ProfileHeader.module.css     | CSS        |        107 |          0 |         23 |        130 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\User\ResourcesSection.js          | JavaScript |        169 |          5 |         16 |        190 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\forum\Answer.js                   | JavaScript |         95 |          2 |         13 |        110 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\forum\AskQuestion.js              | JavaScript |        126 |          1 |         18 |        145 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\forum\ForumList.js                | JavaScript |        125 |          0 |         13 |        138 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\forum\ImageUploader.js            | JavaScript |         62 |          2 |         12 |         76 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\components\forum\QuestionDetail.js           | JavaScript |        184 |          0 |         24 |        208 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\index.css                                    | CSS        |          3 |          1 |          1 |          5 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\index.js                                     | JavaScript |         20 |          0 |          5 |         25 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\lib\axios.js                                 | JavaScript |          8 |          0 |          1 |          9 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\lib\utils.js                                 | JavaScript |          3 |          0 |          1 |          4 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\PostPage.js                            | JavaScript |         31 |          0 |          7 |         38 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\about\About.js                         | JavaScript |         22 |          0 |         11 |         33 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\auth\Auth.js                           | JavaScript |         59 |          2 |          5 |         66 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\auth\Auth.module.css                   | CSS        |        222 |          1 |         33 |        256 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\auth\Login.js                          | JavaScript |         54 |          4 |          7 |         65 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\auth\Register.js                       | JavaScript |         76 |          4 |          9 |         89 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\chat\MeetPage.js                       | JavaScript |         35 |          0 |          9 |         44 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\chat\SingleChatPAge.js                 | JavaScript |        126 |          3 |         16 |        145 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\chat\SingleGroupPage.js                | JavaScript |        163 |          3 |         21 |        187 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\Explore.js                     | JavaScript |         50 |          1 |         11 |         62 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\GameBasedRelief.js  | JavaScript |        279 |         28 |         47 |        354 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\SenseBasedRelief.js | JavaScript |        345 |         14 |         42 |        401 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\TextBasedRelief.js  | JavaScript |        258 |          0 |         30 |        288 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\ui\button.js        | JavaScript |         32 |          0 |          7 |         39 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\ui\card.js          | JavaScript |         34 |          0 |         10 |         44 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\explore\components\ui\tabs.js          | JavaScript |         38 |          0 |          8 |         46 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\feature\Feature.js                     | JavaScript |         22 |          0 |         10 |         32 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\forum\Forum.js                         | JavaScript |         16 |          0 |          4 |         20 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\home\HomePage.js                       | JavaScript |         60 |          0 |         12 |         72 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\home\HomePage.module.css               | CSS        |         21 |          0 |          4 |         25 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\landing\Footer.js                      | JavaScript |         77 |          0 |          7 |         84 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\landing\Header.js                      | JavaScript |         60 |          0 |          7 |         67 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\landing\Landing.module.css             | CSS        |        207 |          7 |         35 |        249 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\landing\LandingPage.js                 | JavaScript |         24 |          0 |          9 |         33 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\landing\Main.js                        | JavaScript |        168 |          0 |          7 |        175 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\CreateQuiz.js                     | JavaScript |        157 |          0 |         16 |        173 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\Home.js                           | JavaScript |        120 |          0 |         14 |        134 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\Quiz.js                           | JavaScript |         21 |          0 |          3 |         24 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\QuizGen.js                        | JavaScript |         58 |          0 |          9 |         67 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\StartQuiz.js                      | JavaScript |        161 |          3 |         23 |        187 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\quiz\StartQuizById.js                  | JavaScript |        163 |          0 |         19 |        182 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\reward\Reward.js                       | JavaScript |          9 |          0 |          2 |         11 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\search\Search.js                       | JavaScript |        123 |          1 |         11 |        135 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\pages\user\ProfilePage.js                    | JavaScript |         42 |          0 |         12 |         54 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\studybuddy\src\utils\dateUtils.js                           | JavaScript |          5 |          0 |          1 |          6 |
+| Total                                                                                               |            |      4,460 |         21 |        456 |      4,937 |
++-----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

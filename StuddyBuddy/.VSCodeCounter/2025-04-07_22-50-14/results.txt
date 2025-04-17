@@ -1,0 +1,64 @@
+Date : 2025-04-07 22:50:14
+Directory : d:\Project\Minor- Rebranded\StuddyBuddy\backend
+Total : 34 files,  1318 codes, 70 comments, 338 blanks, all 1726 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         34 |      1,318 |         70 |        338 |      1,726 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         34 |      1,318 |         70 |        338 |      1,726 |
+| . (Files)                                                                            |          1 |         54 |          5 |         16 |         75 |
+| controllers                                                                          |          9 |        897 |         57 |        214 |      1,168 |
+| lib                                                                                  |          4 |         71 |          1 |         15 |         87 |
+| middleware                                                                           |          1 |         23 |          1 |          8 |         32 |
+| models                                                                               |         10 |        174 |          0 |         37 |        211 |
+| routes                                                                               |          9 |         99 |          6 |         48 |        153 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                             | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\auth.controller.js       | JavaScript |         75 |          1 |         19 |         95 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\chat.controller.js       | JavaScript |         47 |          0 |         19 |         66 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\connection.controller.js | JavaScript |        141 |          3 |         39 |        183 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\forum.controller.js      | JavaScript |        122 |          0 |         20 |        142 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\post.controller.js       | JavaScript |        101 |         20 |         23 |        144 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\quiz.controller.js       | JavaScript |        175 |         31 |         42 |        248 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\refresher.controller.js  | JavaScript |          2 |          0 |          5 |          7 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\studyGroup.controller.js | JavaScript |         52 |          1 |         17 |         70 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\controllers\user.controller.js       | JavaScript |        182 |          1 |         30 |        213 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\cloudinary.js                    | JavaScript |          9 |          0 |          3 |         12 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\db.js                            | JavaScript |         10 |          0 |          1 |         11 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\multer.js                        | JavaScript |         20 |          1 |          6 |         27 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\lib\openai.js                        | JavaScript |         32 |          0 |          5 |         37 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\middleware\auth.middleware.js        | JavaScript |         23 |          1 |          8 |         32 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\answers.model.js              | JavaScript |         11 |          0 |          5 |         16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\chat.model.js                 | JavaScript |         13 |          0 |          4 |         17 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\connectionRequest.model.js    | JavaScript |         22 |          0 |          4 |         26 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\post.model.js                 | JavaScript |         19 |          0 |          3 |         22 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\questions.model.js            | JavaScript |         10 |          0 |          3 |         13 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\quiz.model.js                 | JavaScript |         15 |          0 |          3 |         18 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\quizResult.model.js           | JavaScript |         13 |          0 |          3 |         16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\resource.model.js             | JavaScript |          9 |          0 |          3 |         12 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\studyGroup.model.js           | JavaScript |         17 |          0 |          4 |         21 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\models\user.model.js                 | JavaScript |         45 |          0 |          5 |         50 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\auth.route.js                 | JavaScript |          9 |          0 |          4 |         13 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\chat.route.js                 | JavaScript |          9 |          0 |          5 |         14 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\connection.route.js           | JavaScript |         12 |          2 |          4 |         18 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\forum.route.js                | JavaScript |         12 |          4 |          7 |         23 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\post.route.js                 | JavaScript |         11 |          0 |          4 |         15 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\quiz.route.js                 | JavaScript |         15 |          0 |          9 |         24 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\refresher.route.js            | JavaScript |          6 |          0 |          3 |          9 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\studyGroup.route.js           | JavaScript |         11 |          0 |          5 |         16 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\routes\user.route.js                 | JavaScript |         14 |          0 |          7 |         21 |
+| d:\Project\Minor- Rebranded\StuddyBuddy\backend\server.js                            | JavaScript |         54 |          5 |         16 |         75 |
+| Total                                                                                |            |      1,318 |         70 |        338 |      1,726 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

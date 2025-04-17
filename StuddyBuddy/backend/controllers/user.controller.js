@@ -3,6 +3,7 @@ import cloudinary from "../lib/cloudinary.js";
 import Post from "../models/post.model.js";
 import Question from "../models/questions.model.js";
 import StudyGroup from "../models/studyGroup.model.js";
+import Resource from "../models/resource.model.js";
 
 export const getSuggestedConnections = async (req, res) => {
     try {
@@ -151,6 +152,62 @@ export const getSearchResults = async (req, res) => {
         return res.json(results);
     } catch (error) {
         console.error("Error in getSearchResults controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+export const getResources = async (req, res) => {
+    try {
+        const {userId} = req.params;
+        const user = await User.findById(userId);
+        const resources = await Resource.find({user: user._id});
+        res.json(resources);
+    } catch (error) {
+        console.error("Error in getResources controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+export const postResource = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const {name, link} = req.body;
+        const resource = await Resource.create({name, link, user: userId});
+        await resource.save();
+        res.json(resource);
+    } catch (error) {
+        console.error("Error in postResource controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+export const deleteResource = async (req, res) => {
+    try {
+        const {resourceId} = req.params;
+        const resource = await Resource.findByIdAndDelete(resourceId);
+        res.json(resource);
+    } catch (error) {
+        console.error("Error in deleteResource controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+export const toggleLikeResource = async (req, res) => {
+    try {
+        const {resourceId} = req.params;
+        const userId = req.user._id;
+        const resource = await Resource.findById(resourceId);
+        if (resource.likes.includes(userId)) {
+            resource.likes.pull(userId);
+        } else {
+            resource.likes.push(userId);
+        }
+        await resource.save();
+        res.json(resource);
+    } catch (error) {
+        console.error("Error in toggleLikeResource controller:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
