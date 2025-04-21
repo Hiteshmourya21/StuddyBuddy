@@ -4,6 +4,11 @@ import Post from "../models/post.model.js";
 import Question from "../models/questions.model.js";
 import StudyGroup from "../models/studyGroup.model.js";
 import Resource from "../models/resource.model.js";
+import QuizResult from "../models/quizResult.model.js";
+import { addResourceLikeReward } from "./rewar.controller.js";
+import questionsModel from "../models/questions.model.js";
+import answersModel from "../models/answers.model.js";
+import mongoose from "mongoose";
 
 export const getSuggestedConnections = async (req, res) => {
     try {
@@ -203,6 +208,7 @@ export const toggleLikeResource = async (req, res) => {
             resource.likes.pull(userId);
         } else {
             resource.likes.push(userId);
+            await addResourceLikeReward(resource.user, resourceId);
         }
         await resource.save();
         res.json(resource);
@@ -210,4 +216,115 @@ export const toggleLikeResource = async (req, res) => {
         console.error("Error in toggleLikeResource controller:", error);
         res.status(500).json({ message: "Internal Server Error" });
     }
+};
+
+export const getActivityData = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const quizResults = await QuizResult.find({ user: userId });
+
+        let easy = 0, medium = 0, hard = 0;
+
+        quizResults.forEach(result => {
+            if (result.quizAttempts) {
+                easy += result.quizAttempts.filter(attempt => attempt.difficulty.toLowerCase() === "easy").length;
+                medium += result.quizAttempts.filter(attempt => attempt.difficulty.toLowerCase() === "medium").length;
+                hard += result.quizAttempts.filter(attempt => attempt.difficulty.toLowerCase() === "hard").length;
+            }
+        });
+
+        const difficultyData = [
+            { name: 'Easy', value: easy },
+            { name: 'Medium', value: medium },
+            { name: 'Hard', value: hard },
+        ];
+
+        res.json(difficultyData);
+    } catch (error) {
+        console.error("Error in getActivityData controller:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+
+
+export const getPerformanceData = async (req, res) => {
+    try {
+      const userId = req.user._id;
+  
+      const results = await QuizResult.aggregate([
+        { $match: { user: new mongoose.Types.ObjectId(userId) } },
+        { $unwind: "$quizAttempts" },
+        { $match: { "quizAttempts.quizType": "manual" } },
+        {
+          $lookup: {
+            from: "quizzes",
+            localField: "quizAttempts.quiz",
+            foreignField: "_id",
+            as: "quizDetails"
+          }
+        },
+        { $unwind: { path: "$quizDetails", preserveNullAndEmptyArrays: true } },
+        {
+          $project: {
+            date: { $dateToString: { format: "%Y-%m-%d", date: "$quizDetails.createdAt" } },
+            subject: "$quizAttempts.subject",
+            score: "$quizAttempts.score",
+            difficulty: "$quizAttempts.difficulty"
+          }
+        }
+      ]);
+  
+      res.json(results);
+    } catch (err) {
+      console.error("Error fetching performance data:", err);
+      res.status(500).json({ message: "Server Error" });
+    }
+  };
+  
+
+
+export const getWeeklyEngagement = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+
+    const [posts, questions, answers, quizResults] = await Promise.all([
+      Post.countDocuments({ author: userId, createdAt: { $gte: oneWeekAgo } }),
+      questionsModel.countDocuments({ user: userId, createdAt: { $gte: oneWeekAgo } }),
+      answersModel.countDocuments({ user: userId, createdAt: { $gte: oneWeekAgo } }),
+      QuizResult.countDocuments({ user: userId, createdAt: { $gte: oneWeekAgo } }),
+    ]);
+
+    res.json({
+      posts,
+      questions,
+      answers,
+      quizAttempts: quizResults,
+    });
+  } catch (err) {
+    console.error("Error fetching weekly engagement:", err);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+
+
+export const getResourceMetrics = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const resources = await Resource.find({ user: userId });
+
+    const data = resources.map((r) => ({
+      title: r.name,
+      likes: r.likes.length,
+    }));
+
+    res.json(data);
+  } catch (err) {
+    console.error("Error fetching resource metrics:", err);
+    res.status(500).json({ message: "Server Error" });
+  }
 };

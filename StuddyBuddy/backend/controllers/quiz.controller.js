@@ -8,6 +8,7 @@ import {CohereClient} from "cohere-ai";
 import User from "../models/user.model.js";
 import e from "express";
 import QuizResult from "../models/quizResult.model.js";
+import { addQuizAttemptReward, addQuizScoreReward } from "./rewar.controller.js";
 
 // Initialize Gemini API with your API key
 // const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY); // set this in .env file
@@ -138,6 +139,7 @@ const storeQuiz =  async (req, res) => {
         }
   
         newAttempt.quiz = quiz._id;
+        await addQuizAttemptReward(quiz.user, quiz._id);
       }
   
       if (!quizResult) {
@@ -148,7 +150,7 @@ const storeQuiz =  async (req, res) => {
       } else {
         quizResult.quizAttempts.push(newAttempt);
       }
-  
+      await addQuizScoreReward(userId, quizResult._id, score);
       await quizResult.save();
       res.status(201).json(quizResult);
     } catch (error) {
@@ -187,7 +189,7 @@ export const getQuizById = async (req, res) => {
       const { quizId } = req.params;
       const userId = req.user._id;
       const attempted = await QuizResult.findOne({ user: userId});
-      if (attempted.quizAttempts.some((attempt) => attempt.quiz.toString() === quizId)) {
+      if (attempted?.quizAttempts.some((attempt) => attempt.quiz.toString() === quizId)) {
         return res.status(400).json({ message: "You have already attempted this quiz" });
       }
 

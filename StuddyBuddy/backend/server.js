@@ -14,6 +14,7 @@ import chatRoutes from "./routes/chat.route.js";
 import groupRoutes from "./routes/studyGroup.route.js";
 import forumRoutes from "./routes/forum.route.js";
 import quizRoutes from "./routes/quiz.route.js";
+import rewardRoute from "./routes/reward.route.js";
 
 import { connectDB } from "./lib/db.js";
 
@@ -65,6 +66,7 @@ app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/study-groups", groupRoutes);
 app.use("/api/v1/forum",forumRoutes);
 app.use("/api/v1/quiz",quizRoutes);
+app.use("/api/v1/rewards",rewardRoute);
 
 
 // Start server

@@ -91,7 +91,7 @@ const Home = () => {
                       <span className="text-gray-400">◻</span>
                     )}
                   </td>
-                    {attempt?.quizAttempts.some((attempt) => attempt.quiz.toString() === quiz._id) ?(
+                    {attempt?.quizAttempts?.some((attempt) => attempt.quiz.toString() === quiz._id) ?(
                       <td className='px-4 py-2 text-green-600 bg-green-100'>
                       {quiz.title}
                       </td>

@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import User from "../models/user.model.js";
+import { addDailyLoginReward } from "./rewar.controller.js";
 
 export const signup = async (req,res)=>{
     try {
@@ -62,6 +63,7 @@ export const login = async (req,res)=>{
         if(!isMatch){
             return res.status(400).json({message:"Invalid credentials"});
         }
+        await addDailyLoginReward(user._id);
 
         const token =  jwt.sign( { userId : user._id }, process.env.JWT_SECRET , { expiresIn: "3d" } )
 

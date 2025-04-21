@@ -1,5 +1,6 @@
 import cloudinary from "../lib/cloudinary.js";
 import Post from "../models/post.model.js";
+import { addPostLikeReward } from "./rewar.controller.js";
 // import Notification from "../models/notification.model.js";
 
 export const getFeedPosts = async (req, res) => {
@@ -123,7 +124,7 @@ export const likePost = async (req, res) => {
             post.likes = post.likes.filter(id => id.toString() !== userId.toString());
         } else{
             post.likes.push(userId);
-
+            await addPostLikeReward(userId, postId);
             // if(post.author.toString() !== userId.toString()){
             //     const newNotification = new Notification({
             //         recipient: post.author,

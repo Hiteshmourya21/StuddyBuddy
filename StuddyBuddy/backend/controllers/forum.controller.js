@@ -2,6 +2,7 @@ import Question from "../models/questions.model.js";
 import Answer from "../models/answers.model.js";
 import cloudinary from "../lib/cloudinary.js"; 
 import fs from "fs";
+import { addHelpfulVoteReward } from "./rewar.controller.js";
 
 
 export const postQuestion = async (req, res) => {
@@ -115,7 +116,7 @@ export const postAnANswer = async (req, res) => {
             text: req.body.text,
             image: imageUrl
         });
-
+        await addHelpfulVoteReward(user, newAnswer._id);
         await newAnswer.save();
         res.status(201).json(newAnswer);
     } catch (err) {
