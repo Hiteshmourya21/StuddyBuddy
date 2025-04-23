@@ -15,6 +15,7 @@ import groupRoutes from "./routes/studyGroup.route.js";
 import forumRoutes from "./routes/forum.route.js";
 import quizRoutes from "./routes/quiz.route.js";
 import rewardRoute from "./routes/reward.route.js";
+import studyPlanRoute from "./routes/study.route.js";
 
 import { connectDB } from "./lib/db.js";
 
@@ -27,10 +28,17 @@ const __dirname = path.resolve();
 // Create an HTTP server
 const server = http.createServer(app);
 
+  let io;
+    if(process.env.NODE_ENV !== "production") {
+      io = new Server(server, {
+        cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
+      });
+    }
+    else{
+      io = new Server(server);
+    }
 // Initialize Socket.io
-const io = new Server(server, {
-  cors: { origin: "http://localhost:3000", methods: ["GET", "POST"] },
-});
+
 
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
@@ -49,10 +57,12 @@ io.on("connection", (socket) => {
 });
 
 // CORS configuration
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-}));
+if(process.env.NODE_ENV !== "production") {
+        app.use(cors({
+            origin : "http://localhost:3000",
+            credentials : true, 
+        }))
+    }
 
 app.use(express.json({ limit: "5mb" })); // Parse JSON request body
 app.use(cookieParser());
@@ -67,6 +77,15 @@ app.use("/api/v1/study-groups", groupRoutes);
 app.use("/api/v1/forum",forumRoutes);
 app.use("/api/v1/quiz",quizRoutes);
 app.use("/api/v1/rewards",rewardRoute);
+app.use("/api/v1/study",studyPlanRoute);
+
+if(process.env.NODE_ENV === "production") {
+        app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+        app.get("*",(req,res)=>{
+            res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+        })
+    }
 
 
 // Start server

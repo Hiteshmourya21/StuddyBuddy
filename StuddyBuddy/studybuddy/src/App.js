@@ -22,6 +22,7 @@ import SingleChatPage from './pages/chat/SingleChatPAge.js';
 import SingleGroupPage from './pages/chat/SingleGroupPage.js';
 import MeetPage from './pages/chat/MeetPage.js';
 import DashboardApp from './pages/dashboard/Home.js';
+import BotpressChat from './lib/BotpressChat.js';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
     
       <div className="min-h-screen bg-base-100">
       {authUser && <NavBar/>}
+      {/* {authUser && <BotpressChat/>} */}
       <Routes>
         {/* Routes Before Login */}
         <Route path="/" element={authUser ?<HomePage /> : <LandingPage />} />

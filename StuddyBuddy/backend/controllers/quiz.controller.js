@@ -5,11 +5,9 @@ import quizModel from "../models/quiz.model.js";
 
 // import { GoogleGenerativeAI } from "@google/generative-ai";
 import {CohereClient} from "cohere-ai";
-import User from "../models/user.model.js";
-import e from "express";
 import QuizResult from "../models/quizResult.model.js";
 import { addQuizAttemptReward, addQuizScoreReward } from "./rewar.controller.js";
-
+import axios from "axios";
 // Initialize Gemini API with your API key
 // const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY); // set this in .env file
 
@@ -17,49 +15,51 @@ const cohere = new CohereClient({
   token: process.env.COHERE_API_KEY,
 });
 
-const getQuiz = async (req, res) => {
-  const { subject, difficulty } = req.body;
+// const getQuiz = async (req, res) => {
+//   const { subject, difficulty } = req.body;
 
-  const prompt = `Generate 5 multiple-choice questions on "${subject}" at "${difficulty}" difficulty. 
-Return the result in JSON format as an array of objects with the following fields:
-- question
-- options (array of 4)
-- correctAnswer (value should match one of the options)
-Example:
-[
-  {
-    "question": "What is the capital of France?",
-    "options": ["Paris", "London", "Berlin", "Madrid"],
-    "correctAnswer": "Paris"
-  }
-]`;
+//   const prompt = `Generate 5 multiple-choice questions on "${subject}" at "${difficulty}" difficulty. 
+// Return the result in JSON format as an array of objects with the following fields:
+// - question
+// - options (array of 4)
+// - correctAnswer (value should match one of the options)
+// Example:
+// [
+//   {
+//     "question": "What is the capital of France?",
+//     "options": ["Paris", "London", "Berlin", "Madrid"],
+//     "correctAnswer": "Paris"
+//   }
+// ]`;
 
-  try {
-    const response = await cohere.generate({
-      model: "command",
-      prompt,
-      maxTokens: 600,
-      temperature: 0.7,
-    });
+//   try {
+//     const response = await cohere.generate({
+//       model: "command",
+//       prompt,
+//       maxTokens: 600,
+//       temperature: 0.7,
+//     });
 
-    const rawText = response.generations[0].text.trim();
+//     const rawText = response.generations[0].text.trim();
 
-    let quizData;
-    try {
-      quizData = JSON.parse(rawText);
-    } catch (err) {
-      return res.status(500).json({
-        message: "Error parsing AI response",
-        rawText,
-      });
-    }
+//     let quizData;
+//     try {
+//       quizData = JSON.parse(rawText);
+//     } catch (err) {
+//       return res.status(500).json({
+//         message: "Error parsing AI response",
+//         rawText,
+//       });
+//     }
 
-    res.status(200).json({ quiz: quizData });
-  } catch (err) {
-    console.error("Cohere API Error:", err);
-    res.status(500).json({ message: "Server error while generating quiz", error: err.message });
-  }
-};
+//     res.status(200).json({ quiz: quizData });
+//   } catch (err) {
+//     console.error("Cohere API Error:", err);
+//     res.status(500).json({ message: "Server error while generating quiz", error: err.message });
+//   }
+// };
+
+
 
 // const getQuiz = async (req, res) => {
 //   try {
@@ -90,6 +90,161 @@ Example:
 //     res.status(500).json({ message: "Server Error", error: error.message });
 //   }
 // };
+
+// import { GoogleGenerativeAI } from'@google/generative-ai';
+
+// // Initialize Gemini with API Key
+
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// const getQuiz = async (req, res) => {
+//   const { subject, difficulty } = req.body;
+
+//   const prompt = `Generate 5 multiple-choice questions on "${subject}" at "${difficulty}" difficulty.
+// Return the result in strict JSON format as an array of objects with the following fields:
+// - question
+// - options (array of 4)
+// - correctAnswer (value must match one of the options)
+
+// Example:
+// [
+//   {
+//     "question": "What is the capital of France?",
+//     "options": ["Paris", "London", "Berlin", "Madrid"],
+//     "correctAnswer": "Paris"
+//   }
+// ]`;
+
+//   try {
+//     const model = genAI.getGenerativeModel({ model: "models/gemini-2.0-flash" });
+
+//     const result = await model.generateContent(prompt);
+//     const text = result.response.text().trim();
+
+//     let quizData;
+//     try {
+//       quizData = JSON.parse(text);
+//     } catch (err) {
+//       return res.status(500).json({
+//         message: "Error parsing Gemini response",
+//         rawText: text,
+//       });
+//     }
+
+//     res.status(200).json({ quiz: quizData });
+//   } catch (err) {
+//     console.error("Gemini API Error:", err);
+//     res.status(500).json({ message: "Server error while generating quiz", error: err.message });
+//   }
+// };
+
+
+
+
+const getQuiz = async (req, res) => {
+  const { subject, difficulty } = req.query;
+
+  // Validate input
+  if (!subject || !difficulty) {
+    return res.status(400).json({ message: "Subject and difficulty are required." });
+  }
+
+  const difficultyLevel = difficulty.toLowerCase();
+
+  const subjectCategoryMap = {
+    "General Knowledge": 9,
+    "Entertainment: Books": 10,
+    "Entertainment: Film": 11,
+    "Entertainment: Music": 12,
+    "Entertainment: Musicals & Theatres": 13,
+    "Entertainment: Television": 14,
+    "Entertainment: Video Games": 15,
+    "Entertainment: Board Games": 16,
+    "Science & Nature": 17,
+    "Science: Computers": 18,
+    "Science: Mathematics": 19,
+    "Mythology": 20,
+    "Sports": 21,
+    "Geography": 22,
+    "History": 23,
+    "Politics": 24,
+    "Art": 25,
+    "Celebrities": 26,
+    "Animals": 27,
+    "Vehicles": 28,
+    "Entertainment: Comics": 29,
+    "Science: Gadgets": 30,
+    "Entertainment: Japanese Anime & Manga": 31,
+    "Entertainment: Cartoon & Animations": 32,
+  };
+
+  const categoryId = subjectCategoryMap[subject];
+
+  try {
+    if (categoryId) {
+      // If valid subject, fetch from OpenTDB
+      const response = await axios.get("https://opentdb.com/api.php", {
+        params: {
+          amount: 5,
+          category: categoryId,
+          difficulty: difficultyLevel,
+          type: "multiple",
+        },
+      });
+
+      const questions = response.data.results.map((q) => ({
+        question: q.question,
+        options: [...q.incorrect_answers, q.correct_answer].sort(() => Math.random() - 0.5),
+        correctAnswer: q.correct_answer,
+      }));
+
+      return res.status(200).json({ quiz: questions });
+    } else {
+      // Fallback to Cohere if subject is not found
+      const prompt = `Generate 5 multiple-choice questions on "${subject}" at "${difficulty}" difficulty. 
+      Return the result in JSON format as an array of objects with the following fields:
+      - question
+      - options (array of 4)
+      - correctAnswer (value should match one of the options)
+      Example:
+      [
+        {
+          "question": "What is the capital of France?",
+          "options": ["Paris", "London", "Berlin", "Madrid"],
+          "correctAnswer": "Paris"
+        }
+      ]`;
+
+      const response = await cohere.generate({
+        model: "command",
+        prompt,
+        max_tokens: 600,
+        temperature: 0.7,
+      });
+
+      const rawText = response.generations[0].text.trim();
+
+      let quizData;
+      try {
+        quizData = JSON.parse(rawText);
+      } catch (err) {
+        return res.status(500).json({
+          message: "Error parsing AI response",
+          rawText,
+        });
+      }
+
+      return res.status(200).json({ quiz: quizData });
+    }
+  } catch (error) {
+    console.error("Quiz fetch error:", error);
+    return res.status(500).json({
+      message: "Failed to fetch quiz",
+      error: error.message,
+    });
+  }
+};
+
 
 const storeQuiz =  async (req, res) => {
     try {
@@ -175,7 +330,7 @@ export const getPreviousAiResults = async (req, res) => {
 
 export const getUserQuizes = async (req, res) => {
     try {
-      const quizes = await quizModel.find();
+      const quizes = await quizModel.find().select("-questions");
       res.json(quizes);
     } catch (error) {
       console.error("Error in getUserQuizes controller:", error);

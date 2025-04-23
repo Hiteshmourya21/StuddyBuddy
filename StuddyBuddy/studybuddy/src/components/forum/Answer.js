@@ -2,10 +2,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { User, ThumbsUp, ThumbsDown } from "lucide-react"
 import { axiosInstance } from "../../lib/axios"
+import { useState } from "react"
 
 const Answer = ({ answer, questionId }) => {
   const queryClient = useQueryClient()
-
 
   const reactMutation = useMutation({
     mutationFn: async ({ answerId, reactionType }) => {
@@ -29,16 +29,14 @@ const Answer = ({ answer, questionId }) => {
 
   // Check if the current user has already reacted
   const userId = queryClient.getQueryData(["authUser"])?._id
-  const hasReactedHelpful = answer.reactions?.some(
-    (r) => r.user === userId && r.type === "helpful",
-  )
+  const hasReactedHelpful = answer.reactions?.some( (r) => r.user === userId && r.type === "helpful")
   const hasReactedNotHelpful = answer.reactions?.some(
     (r) => r.user === userId && r.type === "notHelpful",
   )
 
   // Count reactions
-  const helpfulCount = answer.helpfulVotes || 0
-  const notHelpfulCount = answer.notHelpfulVotes || 0
+  const helpfulCount = answer?.reactions.filter((r) => r.type === "helpful").length || 0
+  const notHelpfulCount = answer?.reactions.filter((r) => r.type === "notHelpful").length || 0
 
   return (
     <div className="border-b border-gray-200 pb-6 last:border-0 last:pb-0">

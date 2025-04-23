@@ -126,13 +126,18 @@ export const postAnANswer = async (req, res) => {
 
 export const reactOnAnswer = async (req, res) => {
     try {
+        const userId = req.user._id;
         const { reactionType } = req.body;
         const answer = await Answer.findById(req.params.id);
         
         if (!answer) return res.status(404).json({ message: "Answer not found" });
 
-        if (reactionType === 'helpful') answer.helpfulVotes += 1;
-        else if (reactionType === 'notHelpful') answer.notHelpfulVotes += 1;
+        if(answer.reactions.some((r) => r.user.toString() === userId.toString())) {
+            answer.reactions = answer.reactions.filter((r) => r.user.toString() !== userId.toString());
+            // console.log(answer.reactions);
+        } else {
+            answer.reactions.push({ user: userId, type: reactionType });
+        }
 
         await answer.save();
         res.json({ message: "Reaction added", answer });

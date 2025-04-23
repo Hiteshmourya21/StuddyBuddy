@@ -8,8 +8,12 @@ const AnswerSchema = new mongoose.Schema({
     text: { type: String, required: true },
     image: { type: String },
     createdAt: { type: Date, default: Date.now },
-    helpfulVotes: { type: Number, default: 0 },
-    notHelpfulVotes: { type: Number, default: 0 }
+    reactions:[
+        {
+            user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+            type: { type: String, required: true, enum: ['helpful', 'notHelpful'] },
+        }
+    ]
 });
 
 export default mongoose.model('Answer', AnswerSchema);

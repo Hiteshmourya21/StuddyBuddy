@@ -14,6 +14,7 @@ const QuestionDetail = () => {
   const queryClient = useQueryClient()
   const [answer, setAnswer] = useState("")
   const [image, setImage] = useState(null)
+  const [liked,setLiked] = useState(false)
 
   const {
     data: question,
